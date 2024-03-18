@@ -1,6 +1,0 @@
-- hosts: vmubuntu1
-  tasks:
-    - name: Test de notre module
-      test:
-      register: result
-    - debug: var=result

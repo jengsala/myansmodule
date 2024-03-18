@@ -1,0 +1,12 @@
+- hosts: vmubuntu1
+  tasks:
+    - name: Test de notre module
+      test:
+        name: "MageDarkX"
+        attack: distance
+        inventory:
+          - powder
+          - stick
+          - potion
+      register: result
+    - debug: var=result

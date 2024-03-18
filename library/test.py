@@ -5,10 +5,19 @@ from ansible.module_utils.basic import AnsibleModule
 
 def main():
 
-
-	module = AnsibleModule(argument_spec={})
-	response = {"result" : "hello world"}
-	module.exit_json(changed=False, meta=response)
+	fields = {
+		"name": {"default" : "unknown", "type": "str"},
+		"description": {"default": "empty", "required": False, "type": "str"},
+        "attack": {
+        	"default": "melee",
+        	"choices": ['melee', 'distance'],
+        	"type": 'str'
+        },
+		"inventory": {"default": [], "required": False, "type": "list"},
+		"monster": {"default": False, "required": False, "type": "bool"},
+	}
+	module = AnsibleModule(argument_spec=fields)
+	module.exit_json(changed=False, meta=module.params)
 
 
 if __name__ == '__main__':
